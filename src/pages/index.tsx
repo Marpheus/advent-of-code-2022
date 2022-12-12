@@ -4,6 +4,7 @@ import readline from "readline";
 import React from "react";
 import { count3MostCalories, countMostCalories } from "../utils/day1";
 import { countRPSScore, countRPSScoreCorrectly } from "../utils/day2";
+import { countPriorities, countPrioritiesInGroups } from "../utils/day3";
 
 type Props = {
   day1Input: string[];
@@ -41,6 +42,15 @@ const Home = (props: Props) => {
           <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
             <span>Day 2, part 2: </span>
             <span>{countRPSScoreCorrectly(props.day2Input)}</span>
+          </p>
+          <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 3, part 1: </span>
+            <span>{countPriorities(props.day3Input)}</span>
+          </p>
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 2, part 2: </span>
+            <span>{countPrioritiesInGroups(props.day3Input)}</span>
           </p>
           <hr />
         </div>
