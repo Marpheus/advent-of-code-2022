@@ -5,6 +5,7 @@ import React from "react";
 
 type Props = {
   day1Input: string[];
+  day2Input: string[];
 };
 const Home = (props: Props) => {
   const getArrayOfCalories = () => {
@@ -36,8 +37,100 @@ const Home = (props: Props) => {
       }, 0);
   };
 
+  const countRPSScore = () => {
+    let score = 0;
+    props.day2Input.forEach((e: string) => {
+      const opponent = e.slice(0, 1);
+      const me = e.slice(2, 3);
+
+      let tmpScore = 0;
+      if (me === "Y") {
+        tmpScore += 2;
+        if (opponent === "B") {
+          tmpScore += 3;
+        }
+        if (opponent === "A") {
+          tmpScore += 6;
+        }
+      }
+      if (me === "X") {
+        tmpScore += 1;
+        if (opponent === "A") {
+          tmpScore += 3;
+        }
+        if (opponent === "C") {
+          tmpScore += 6;
+        }
+      }
+      if (me === "Z") {
+        tmpScore += 3;
+        if (opponent === "C") {
+          tmpScore += 3;
+        }
+        if (opponent === "B") {
+          tmpScore += 6;
+        }
+      }
+      score += tmpScore;
+    });
+    return score;
+  };
+
+  const countRPSScoreCorrectly = () => {
+    let score = 0;
+    props.day2Input.forEach((e: string) => {
+      const opponent = e.slice(0, 1);
+      const me = e.slice(2, 3);
+
+      let tmpScore = 0;
+      if (opponent === "A") {
+        if (me === "X") {
+          tmpScore += 3;
+        }
+        if (me === "Y") {
+          tmpScore += 1;
+          tmpScore += 3;
+        }
+        if (me === "Z") {
+          tmpScore += 2;
+          tmpScore += 6;
+        }
+      }
+      if (opponent === "B") {
+        if (me === "X") {
+          tmpScore += 1;
+        }
+        if (me === "Y") {
+          tmpScore += 2;
+          tmpScore += 3;
+        }
+        if (me === "Z") {
+          tmpScore += 3;
+          tmpScore += 6;
+        }
+      }
+      if (opponent === "C") {
+        if (me === "X") {
+          tmpScore += 2;
+        }
+        if (me === "Y") {
+          tmpScore += 3;
+          tmpScore += 3;
+        }
+        if (me === "Z") {
+          tmpScore += 1;
+          tmpScore += 6;
+        }
+      }
+      score += tmpScore;
+    });
+    return score;
+  };
+
   const day1Answer1 = countMostCalories();
   const day1Answer2 = count3MostCalories();
+  const day2Answer1 = countRPSScore();
+  const day2Answer2 = countRPSScoreCorrectly();
   return (
     <>
       <Head>
@@ -52,14 +145,24 @@ const Home = (props: Props) => {
           </h1>
         </div>
         <div className="container flex flex-col">
-          <p className="text-2xl tracking-tight text-white">
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
             <span>Day 1, part 1: </span>
             <span>{day1Answer1}</span>
           </p>
-          <p className="text-2xl tracking-tight text-white">
+          <p className="pb-2 pt-2  text-2xl tracking-tight text-white">
             <span>Day 1, part 2: </span>
             <span>{day1Answer2}</span>
           </p>
+          <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 2, part 1: </span>
+            <span>{day2Answer1}</span>
+          </p>
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 2, part 2: </span>
+            <span>{day2Answer2}</span>
+          </p>
+          <hr />
         </div>
       </main>
     </>
@@ -69,19 +172,26 @@ const Home = (props: Props) => {
 export default Home;
 
 export async function getServerSideProps() {
-  const day1Input: string[] = [];
-  const rl = readline.createInterface({
-    input: fs.createReadStream("./src/inputs/day1.input"),
-    crlfDelay: Infinity,
-  });
-  rl.on("line", (line) => {
-    day1Input.push(line);
-  });
+  const loadInputFile = async (filePath: string) => {
+    const input: string[] = [];
+    const rl = readline.createInterface({
+      input: fs.createReadStream(filePath),
+      crlfDelay: Infinity,
+    });
+    rl.on("line", (line) => {
+      input.push(line);
+    });
 
-  await new Promise((res) => rl.once("close", res));
+    await new Promise((res) => rl.once("close", res));
+    return input;
+  };
+  const day1Input: string[] = await loadInputFile("./src/inputs/day1.input");
+  const day2Input: string[] = await loadInputFile("./src/inputs/day2.input");
+
   return {
     props: {
       day1Input: day1Input,
+      day2Input: day2Input,
     },
   };
 }
