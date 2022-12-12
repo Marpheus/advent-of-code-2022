@@ -5,11 +5,13 @@ import React from "react";
 import { count3MostCalories, countMostCalories } from "../utils/day1";
 import { countRPSScore, countRPSScoreCorrectly } from "../utils/day2";
 import { countPriorities, countPrioritiesInGroups } from "../utils/day3";
+import { countOverlaps, countOverlaps2 } from "../utils/day4";
 
 type Props = {
   day1Input: string[];
   day2Input: string[];
   day3Input: string[];
+  day4Input: string[];
 };
 const Home = (props: Props) => {
   return (
@@ -53,6 +55,15 @@ const Home = (props: Props) => {
             <span>{countPrioritiesInGroups(props.day3Input)}</span>
           </p>
           <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 4, part 1: </span>
+            <span>{countOverlaps(props.day4Input)}</span>
+          </p>
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 4, part 2: </span>
+            <span>{countOverlaps2(props.day4Input)}</span>
+          </p>
+          <hr />
         </div>
       </main>
     </>
@@ -78,12 +89,14 @@ export async function getServerSideProps() {
   const day1Input: string[] = await loadInputFile("./src/inputs/day1.input");
   const day2Input: string[] = await loadInputFile("./src/inputs/day2.input");
   const day3Input: string[] = await loadInputFile("./src/inputs/day3.input");
+  const day4Input: string[] = await loadInputFile("./src/inputs/day4.input");
 
   return {
     props: {
       day1Input,
       day2Input,
       day3Input,
+      day4Input,
     },
   };
 }
