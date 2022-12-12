@@ -7,11 +7,18 @@
 
 /** @type {import("next").NextConfig} */
 const config = {
-  reactStrictMode: true,
-  swcMinify: true,
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
+    reactStrictMode: true,
+    swcMinify: true,
+    i18n: {
+        locales: ["en"],
+        defaultLocale: "en",
+    },
+    webpack5: true,
+    webpack: (config) => {
+        config.resolve.fallback = {fs: false};
+
+        return config;
+    },
 };
+
 export default config;
