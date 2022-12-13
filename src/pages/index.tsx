@@ -6,12 +6,14 @@ import { count3MostCalories, countMostCalories } from "../utils/day1";
 import { countRPSScore, countRPSScoreCorrectly } from "../utils/day2";
 import { countPriorities, countPrioritiesInGroups } from "../utils/day3";
 import { countOverlaps, countOverlaps2 } from "../utils/day4";
+import { getTopOfStacks, getTopOfStacks2 } from "../utils/day5";
 
 type Props = {
   day1Input: string[];
   day2Input: string[];
   day3Input: string[];
   day4Input: string[];
+  day5Input: string[];
 };
 const Home = (props: Props) => {
   return (
@@ -64,6 +66,15 @@ const Home = (props: Props) => {
             <span>{countOverlaps2(props.day4Input)}</span>
           </p>
           <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 5, part 1: </span>
+            <span>{getTopOfStacks(props.day5Input)}</span>
+          </p>
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 5, part 2: </span>
+            <span>{getTopOfStacks2(props.day5Input)}</span>
+          </p>
+          <hr />
         </div>
       </main>
     </>
@@ -90,6 +101,7 @@ export async function getServerSideProps() {
   const day2Input: string[] = await loadInputFile("./src/inputs/day2.input");
   const day3Input: string[] = await loadInputFile("./src/inputs/day3.input");
   const day4Input: string[] = await loadInputFile("./src/inputs/day4.input");
+  const day5Input: string[] = await loadInputFile("./src/inputs/day5.input");
 
   return {
     props: {
@@ -97,6 +109,7 @@ export async function getServerSideProps() {
       day2Input,
       day3Input,
       day4Input,
+      day5Input,
     },
   };
 }
