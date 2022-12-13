@@ -7,6 +7,7 @@ import { countRPSScore, countRPSScoreCorrectly } from "../utils/day2";
 import { countPriorities, countPrioritiesInGroups } from "../utils/day3";
 import { countOverlaps, countOverlaps2 } from "../utils/day4";
 import { getTopOfStacks, getTopOfStacks2 } from "../utils/day5";
+import { getMessageMarker, getPacketMarker } from "../utils/day6";
 
 type Props = {
   day1Input: string[];
@@ -14,6 +15,7 @@ type Props = {
   day3Input: string[];
   day4Input: string[];
   day5Input: string[];
+  day6Input: string[];
 };
 const Home = (props: Props) => {
   return (
@@ -75,6 +77,14 @@ const Home = (props: Props) => {
             <span>{getTopOfStacks2(props.day5Input)}</span>
           </p>
           <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 6, part 1: </span>
+            <span>{getPacketMarker(props.day6Input)}</span>
+          </p>
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 6, part 2: </span>
+            <span>{getMessageMarker(props.day6Input)}</span>
+          </p>
         </div>
       </main>
     </>
@@ -102,6 +112,7 @@ export async function getServerSideProps() {
   const day3Input: string[] = await loadInputFile("./src/inputs/day3.input");
   const day4Input: string[] = await loadInputFile("./src/inputs/day4.input");
   const day5Input: string[] = await loadInputFile("./src/inputs/day5.input");
+  const day6Input: string[] = await loadInputFile("./src/inputs/day6.input");
 
   return {
     props: {
@@ -110,6 +121,7 @@ export async function getServerSideProps() {
       day3Input,
       day4Input,
       day5Input,
+      day6Input,
     },
   };
 }
