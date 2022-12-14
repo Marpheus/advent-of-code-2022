@@ -8,6 +8,7 @@ import { countPriorities, countPrioritiesInGroups } from "../utils/day3";
 import { countOverlaps, countOverlaps2 } from "../utils/day4";
 import { getTopOfStacks, getTopOfStacks2 } from "../utils/day5";
 import { getMessageMarker, getPacketMarker } from "../utils/day6";
+import { getFileSizes, getFileSizes2 } from "../utils/day7";
 
 type Props = {
   day1Input: string[];
@@ -16,6 +17,7 @@ type Props = {
   day4Input: string[];
   day5Input: string[];
   day6Input: string[];
+  day7Input: string[];
 };
 const Home = (props: Props) => {
   return (
@@ -85,6 +87,15 @@ const Home = (props: Props) => {
             <span>Day 6, part 2: </span>
             <span>{getMessageMarker(props.day6Input)}</span>
           </p>
+          <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 7, part 1: </span>
+            <span>{getFileSizes(props.day7Input)}</span>
+          </p>
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 7, part 2: </span>
+            <span>{getFileSizes2(props.day7Input)}</span>
+          </p>
         </div>
       </main>
     </>
@@ -113,6 +124,7 @@ export async function getServerSideProps() {
   const day4Input: string[] = await loadInputFile("./src/inputs/day4.input");
   const day5Input: string[] = await loadInputFile("./src/inputs/day5.input");
   const day6Input: string[] = await loadInputFile("./src/inputs/day6.input");
+  const day7Input: string[] = await loadInputFile("./src/inputs/day7.input");
 
   return {
     props: {
@@ -122,6 +134,7 @@ export async function getServerSideProps() {
       day4Input,
       day5Input,
       day6Input,
+      day7Input,
     },
   };
 }
