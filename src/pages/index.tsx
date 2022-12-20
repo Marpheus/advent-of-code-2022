@@ -9,6 +9,7 @@ import { countOverlaps, countOverlaps2 } from "../utils/day4";
 import { getTopOfStacks, getTopOfStacks2 } from "../utils/day5";
 import { getMessageMarker, getPacketMarker } from "../utils/day6";
 import { getFileSizes, getFileSizes2 } from "../utils/day7";
+import { getVisibilityScore, getVisibleTrees } from "../utils/day8";
 
 type Props = {
   day1Input: string[];
@@ -18,6 +19,7 @@ type Props = {
   day5Input: string[];
   day6Input: string[];
   day7Input: string[];
+  day8Input: string[];
 };
 const Home = (props: Props) => {
   return (
@@ -32,6 +34,10 @@ const Home = (props: Props) => {
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             Advent of <span className="text-[hsl(280,100%,70%)]">Code</span>
           </h1>
+          <h3 className="text-3xl font-extrabold tracking-tight text-white">
+            made by{" "}
+            <span className="text-5xl text-[hsl(80,100%,70%)]">Marpheus</span>
+          </h3>
         </div>
         <div className="container flex flex-col">
           <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
@@ -96,6 +102,15 @@ const Home = (props: Props) => {
             <span>Day 7, part 2: </span>
             <span>{getFileSizes2(props.day7Input)}</span>
           </p>
+          <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 8, part 1: </span>
+            <span>{getVisibleTrees(props.day8Input)}</span>
+          </p>
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 8, part 2: </span>
+            <span>{getVisibilityScore(props.day8Input)}</span>
+          </p>
         </div>
       </main>
     </>
@@ -125,6 +140,7 @@ export async function getServerSideProps() {
   const day5Input: string[] = await loadInputFile("./src/inputs/day5.input");
   const day6Input: string[] = await loadInputFile("./src/inputs/day6.input");
   const day7Input: string[] = await loadInputFile("./src/inputs/day7.input");
+  const day8Input: string[] = await loadInputFile("./src/inputs/day8.input");
 
   return {
     props: {
@@ -135,6 +151,7 @@ export async function getServerSideProps() {
       day5Input,
       day6Input,
       day7Input,
+      day8Input,
     },
   };
 }
