@@ -10,6 +10,7 @@ import { getTopOfStacks, getTopOfStacks2 } from "../utils/day5";
 import { getMessageMarker, getPacketMarker } from "../utils/day6";
 import { getFileSizes, getFileSizes2 } from "../utils/day7";
 import { getVisibilityScore, getVisibleTrees } from "../utils/day8";
+import { getRopePositions, getRopePositions2 } from "../utils/day9";
 
 type Props = {
   day1Input: string[];
@@ -20,6 +21,7 @@ type Props = {
   day6Input: string[];
   day7Input: string[];
   day8Input: string[];
+  day9Input: string[];
 };
 const Home = (props: Props) => {
   return (
@@ -111,6 +113,15 @@ const Home = (props: Props) => {
             <span>Day 8, part 2: </span>
             <span>{getVisibilityScore(props.day8Input)}</span>
           </p>
+          <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 9, part 1: </span>
+            <span>{getRopePositions(props.day9Input)}</span>
+          </p>
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 9, part 2: </span>
+            <span>{getRopePositions2(props.day9Input)}</span>
+          </p>
         </div>
       </main>
     </>
@@ -141,6 +152,7 @@ export async function getServerSideProps() {
   const day6Input: string[] = await loadInputFile("./src/inputs/day6.input");
   const day7Input: string[] = await loadInputFile("./src/inputs/day7.input");
   const day8Input: string[] = await loadInputFile("./src/inputs/day8.input");
+  const day9Input: string[] = await loadInputFile("./src/inputs/day9.input");
 
   return {
     props: {
@@ -152,6 +164,7 @@ export async function getServerSideProps() {
       day6Input,
       day7Input,
       day8Input,
+      day9Input,
     },
   };
 }
