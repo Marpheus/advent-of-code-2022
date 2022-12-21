@@ -11,6 +11,7 @@ import { getMessageMarker, getPacketMarker } from "../utils/day6";
 import { getFileSizes, getFileSizes2 } from "../utils/day7";
 import { getVisibilityScore, getVisibleTrees } from "../utils/day8";
 import { getRopePositions, getRopePositions2 } from "../utils/day9";
+import { getSignal, getSignalStrength } from "../utils/day10";
 
 type Props = {
   day1Input: string[];
@@ -22,8 +23,19 @@ type Props = {
   day7Input: string[];
   day8Input: string[];
   day9Input: string[];
+  day10Input: string[];
 };
 const Home = (props: Props) => {
+  const renderSignal = (input: string[]) => {
+    const signal = getSignal(input);
+    return (
+      <div className="font-mono">
+        {signal.map((line, i) => {
+          return <div key={i}>{line.join("")}</div>;
+        })}
+      </div>
+    );
+  };
   return (
     <>
       <Head>
@@ -41,7 +53,7 @@ const Home = (props: Props) => {
             <span className="text-5xl text-[hsl(80,100%,70%)]">Marpheus</span>
           </h3>
         </div>
-        <div className="container flex flex-col">
+        <div className="container mb-20 flex flex-col">
           <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
             <span>Day 1, part 1: </span>
             <span>{countMostCalories(props.day1Input)}</span>
@@ -122,6 +134,15 @@ const Home = (props: Props) => {
             <span>Day 9, part 2: </span>
             <span>{getRopePositions2(props.day9Input)}</span>
           </p>
+          <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 10, part 1: </span>
+            <span>{getSignalStrength(props.day10Input)}</span>
+          </p>
+          <div className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 10, part 2: </span>
+            <>{renderSignal(props.day10Input)}</>
+          </div>
         </div>
       </main>
     </>
@@ -153,6 +174,7 @@ export async function getServerSideProps() {
   const day7Input: string[] = await loadInputFile("./src/inputs/day7.input");
   const day8Input: string[] = await loadInputFile("./src/inputs/day8.input");
   const day9Input: string[] = await loadInputFile("./src/inputs/day9.input");
+  const day10Input: string[] = await loadInputFile("./src/inputs/day10.input");
 
   return {
     props: {
@@ -165,6 +187,7 @@ export async function getServerSideProps() {
       day7Input,
       day8Input,
       day9Input,
+      day10Input,
     },
   };
 }
