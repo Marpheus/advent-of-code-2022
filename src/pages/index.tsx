@@ -12,6 +12,10 @@ import { getFileSizes, getFileSizes2 } from "../utils/day7";
 import { getVisibilityScore, getVisibleTrees } from "../utils/day8";
 import { getRopePositions, getRopePositions2 } from "../utils/day9";
 import { getSignal, getSignalStrength } from "../utils/day10";
+import {
+  getMonkeyInspectionCount,
+  getMonkeyInspectionCount2,
+} from "../utils/day11";
 
 type Props = {
   day1Input: string[];
@@ -143,6 +147,15 @@ const Home = (props: Props) => {
             <span>Day 10, part 2: </span>
             <>{renderSignal(props.day10Input)}</>
           </div>
+          <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 11, part 1: </span>
+            <span>{getMonkeyInspectionCount()}</span>
+          </p>
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 11, part 2: </span>
+            <span>{getMonkeyInspectionCount2()}</span>
+          </p>
         </div>
       </main>
     </>
