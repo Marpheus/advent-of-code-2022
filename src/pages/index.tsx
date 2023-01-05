@@ -16,6 +16,7 @@ import {
   getMonkeyInspectionCount,
   getMonkeyInspectionCount2,
 } from "../utils/day11";
+import { getShortestPath, getShortestPath2 } from "../utils/day12";
 
 type Props = {
   day1Input: string[];
@@ -28,6 +29,7 @@ type Props = {
   day8Input: string[];
   day9Input: string[];
   day10Input: string[];
+  day12Input: string[];
 };
 const Home = (props: Props) => {
   const renderSignal = (input: string[]) => {
@@ -156,6 +158,15 @@ const Home = (props: Props) => {
             <span>Day 11, part 2: </span>
             <span>{getMonkeyInspectionCount2()}</span>
           </p>
+          <hr />
+          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 12, part 1: </span>
+            <span>{getShortestPath(props.day12Input)}</span>
+          </p>
+          <div className="pb-2 pt-2 text-2xl tracking-tight text-white">
+            <span>Day 12, part 2: </span>
+            <span>{getShortestPath2(props.day12Input)}</span>
+          </div>
         </div>
       </main>
     </>
@@ -188,6 +199,7 @@ export async function getServerSideProps() {
   const day8Input: string[] = await loadInputFile("./src/inputs/day8.input");
   const day9Input: string[] = await loadInputFile("./src/inputs/day9.input");
   const day10Input: string[] = await loadInputFile("./src/inputs/day10.input");
+  const day12Input: string[] = await loadInputFile("./src/inputs/day12.input");
 
   return {
     props: {
@@ -201,6 +213,7 @@ export async function getServerSideProps() {
       day8Input,
       day9Input,
       day10Input,
+      day12Input,
     },
   };
 }
