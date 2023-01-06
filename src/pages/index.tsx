@@ -2,21 +2,8 @@ import Head from "next/head";
 import fs from "fs";
 import readline from "readline";
 import React from "react";
-import { count3MostCalories, countMostCalories } from "../utils/day1";
-import { countRPSScore, countRPSScoreCorrectly } from "../utils/day2";
-import { countPriorities, countPrioritiesInGroups } from "../utils/day3";
-import { countOverlaps, countOverlaps2 } from "../utils/day4";
-import { getTopOfStacks, getTopOfStacks2 } from "../utils/day5";
-import { getMessageMarker, getPacketMarker } from "../utils/day6";
-import { getFileSizes, getFileSizes2 } from "../utils/day7";
-import { getVisibilityScore, getVisibleTrees } from "../utils/day8";
-import { getRopePositions, getRopePositions2 } from "../utils/day9";
-import { getSignal, getSignalStrength } from "../utils/day10";
-import {
-  getMonkeyInspectionCount,
-  getMonkeyInspectionCount2,
-} from "../utils/day11";
-import { getShortestPath, getShortestPath2 } from "../utils/day12";
+import { getSignal } from "../utils/day10";
+import { getIndicesSum, getIndicesSum2 } from "../utils/day13";
 
 type Props = {
   day1Input: string[];
@@ -60,112 +47,121 @@ const Home = (props: Props) => {
           </h3>
         </div>
         <div className="container mb-20 flex flex-col">
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 1, part 1: </span>
-            <span>{countMostCalories(props.day1Input)}</span>
-          </p>
-          <p className="pb-2 pt-2  text-2xl tracking-tight text-white">
-            <span>Day 1, part 2: </span>
-            <span>{count3MostCalories(props.day1Input)}</span>
-          </p>
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 1, part 1: </span>*/}
+          {/*    <span>{countMostCalories(props.day1Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2  text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 1, part 2: </span>*/}
+          {/*    <span>{count3MostCalories(props.day1Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 2, part 1: </span>*/}
+          {/*    <span>{countRPSScore(props.day2Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 2, part 2: </span>*/}
+          {/*    <span>{countRPSScoreCorrectly(props.day2Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 3, part 1: </span>*/}
+          {/*    <span>{countPriorities(props.day3Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 2, part 2: </span>*/}
+          {/*    <span>{countPrioritiesInGroups(props.day3Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 4, part 1: </span>*/}
+          {/*    <span>{countOverlaps(props.day4Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 4, part 2: </span>*/}
+          {/*    <span>{countOverlaps2(props.day4Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 5, part 1: </span>*/}
+          {/*    <span>{getTopOfStacks(props.day5Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 5, part 2: </span>*/}
+          {/*    <span>{getTopOfStacks2(props.day5Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 6, part 1: </span>*/}
+          {/*    <span>{getPacketMarker(props.day6Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 6, part 2: </span>*/}
+          {/*    <span>{getMessageMarker(props.day6Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 7, part 1: </span>*/}
+          {/*    <span>{getFileSizes(props.day7Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 7, part 2: </span>*/}
+          {/*    <span>{getFileSizes2(props.day7Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 8, part 1: </span>*/}
+          {/*    <span>{getVisibleTrees(props.day8Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 8, part 2: </span>*/}
+          {/*    <span>{getVisibilityScore(props.day8Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 9, part 1: </span>*/}
+          {/*    <span>{getRopePositions(props.day9Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 9, part 2: </span>*/}
+          {/*    <span>{getRopePositions2(props.day9Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 10, part 1: </span>*/}
+          {/*    <span>{getSignalStrength(props.day10Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <div className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 10, part 2: </span>*/}
+          {/*    <>{renderSignal(props.day10Input)}</>*/}
+          {/*  </div>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 11, part 1: </span>*/}
+          {/*    <span>{getMonkeyInspectionCount()}</span>*/}
+          {/*  </p>*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 11, part 2: </span>*/}
+          {/*    <span>{getMonkeyInspectionCount2()}</span>*/}
+          {/*  </p>*/}
+          {/*  <hr />*/}
+          {/*  <p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 12, part 1: </span>*/}
+          {/*    <span>{getShortestPath(props.day12Input)}</span>*/}
+          {/*  </p>*/}
+          {/*  <div className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*    <span>Day 12, part 2: </span>*/}
+          {/*    <span>{getShortestPath2(props.day12Input)}</span>*/}
+          {/*  </div>*/}
           <hr />
           <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 2, part 1: </span>
-            <span>{countRPSScore(props.day2Input)}</span>
-          </p>
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 2, part 2: </span>
-            <span>{countRPSScoreCorrectly(props.day2Input)}</span>
-          </p>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 3, part 1: </span>
-            <span>{countPriorities(props.day3Input)}</span>
-          </p>
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 2, part 2: </span>
-            <span>{countPrioritiesInGroups(props.day3Input)}</span>
-          </p>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 4, part 1: </span>
-            <span>{countOverlaps(props.day4Input)}</span>
-          </p>
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 4, part 2: </span>
-            <span>{countOverlaps2(props.day4Input)}</span>
-          </p>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 5, part 1: </span>
-            <span>{getTopOfStacks(props.day5Input)}</span>
-          </p>
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 5, part 2: </span>
-            <span>{getTopOfStacks2(props.day5Input)}</span>
-          </p>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 6, part 1: </span>
-            <span>{getPacketMarker(props.day6Input)}</span>
-          </p>
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 6, part 2: </span>
-            <span>{getMessageMarker(props.day6Input)}</span>
-          </p>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 7, part 1: </span>
-            <span>{getFileSizes(props.day7Input)}</span>
-          </p>
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 7, part 2: </span>
-            <span>{getFileSizes2(props.day7Input)}</span>
-          </p>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 8, part 1: </span>
-            <span>{getVisibleTrees(props.day8Input)}</span>
-          </p>
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 8, part 2: </span>
-            <span>{getVisibilityScore(props.day8Input)}</span>
-          </p>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 9, part 1: </span>
-            <span>{getRopePositions(props.day9Input)}</span>
-          </p>
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 9, part 2: </span>
-            <span>{getRopePositions2(props.day9Input)}</span>
-          </p>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 10, part 1: </span>
-            <span>{getSignalStrength(props.day10Input)}</span>
+            <span>Day 13, part 1: </span>
+            <span>{getIndicesSum()}</span>
           </p>
           <div className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 10, part 2: </span>
-            <>{renderSignal(props.day10Input)}</>
-          </div>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 11, part 1: </span>
-            <span>{getMonkeyInspectionCount()}</span>
-          </p>
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 11, part 2: </span>
-            <span>{getMonkeyInspectionCount2()}</span>
-          </p>
-          <hr />
-          <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 12, part 1: </span>
-            <span>{getShortestPath(props.day12Input)}</span>
-          </p>
-          <div className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 12, part 2: </span>
-            <span>{getShortestPath2(props.day12Input)}</span>
+            <span>Day 13, part 2: </span>
+            <span>{getIndicesSum2()}</span>
           </div>
         </div>
       </main>
