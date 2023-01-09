@@ -3,7 +3,7 @@ import fs from "fs";
 import readline from "readline";
 import React from "react";
 import { getSignal } from "../utils/day10";
-import { getIndicesSum, getIndicesSum2 } from "../utils/day13";
+import { countSand, countSand2 } from "../utils/day14";
 
 type Props = {
   day1Input: string[];
@@ -17,6 +17,7 @@ type Props = {
   day9Input: string[];
   day10Input: string[];
   day12Input: string[];
+  day14Input: string[];
 };
 const Home = (props: Props) => {
   const renderSignal = (input: string[]) => {
@@ -154,14 +155,23 @@ const Home = (props: Props) => {
           {/*    <span>Day 12, part 2: </span>*/}
           {/*    <span>{getShortestPath2(props.day12Input)}</span>*/}
           {/*  </div>*/}
+          {/*<hr />*/}
+          {/*<p className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*  <span>Day 13, part 1: </span>*/}
+          {/*  <span>{getIndicesSum()}</span>*/}
+          {/*</p>*/}
+          {/*<div className="pb-2 pt-2 text-2xl tracking-tight text-white">*/}
+          {/*  <span>Day 13, part 2: </span>*/}
+          {/*  <span>{getIndicesSum2()}</span>*/}
+          {/*</div>*/}
           <hr />
           <p className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 13, part 1: </span>
-            <span>{getIndicesSum()}</span>
+            <span>Day 14, part 1: </span>
+            <span>{countSand(props.day14Input)}</span>
           </p>
           <div className="pb-2 pt-2 text-2xl tracking-tight text-white">
-            <span>Day 13, part 2: </span>
-            <span>{getIndicesSum2()}</span>
+            <span>Day 14, part 2: </span>
+            <span>{countSand2(props.day14Input)}</span>
           </div>
         </div>
       </main>
@@ -196,6 +206,7 @@ export async function getServerSideProps() {
   const day9Input: string[] = await loadInputFile("./src/inputs/day9.input");
   const day10Input: string[] = await loadInputFile("./src/inputs/day10.input");
   const day12Input: string[] = await loadInputFile("./src/inputs/day12.input");
+  const day14Input: string[] = await loadInputFile("./src/inputs/day14.input");
 
   return {
     props: {
@@ -210,6 +221,7 @@ export async function getServerSideProps() {
       day9Input,
       day10Input,
       day12Input,
+      day14Input,
     },
   };
 }
